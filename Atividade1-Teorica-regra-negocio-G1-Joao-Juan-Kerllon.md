@@ -102,7 +102,7 @@ def aplicar_desconto(preco_original, percentual_desconto):
     return "Desconto aplicado com sucesso!"
 ```
 
-##3. Referências
+## 3. Referências
 
 * Material de Aula: Conceitos Fundamentais - O que é Regra de Negócio?;
 
@@ -112,7 +112,7 @@ def aplicar_desconto(preco_original, percentual_desconto):
 
 * Regras de negócio no banco de dados: quais as vantagens e desvantagens? Stack Overflow em Português. Disponível em: https://pt.stackoverflow.com/questions/15739/regras-de-neg%C3%B3cio-no-banco-de-dados-quais-as-vantagens-e-desvantagens.
 
- ##4. Conclusões
+ ## 4. Conclusões
 
 O grupo conclui que o sucesso de um sistema depende de aplicar a regra certa no lugar certo. O Banco de Dados não é apenas um local de armazenamento, mas a fundação que deve garantir a integridade de domínio, de chaves e a execução segura via transações ACID. Por outro lado, a Aplicação deve atuar como o maestro operacional, cuidando de validações dinâmicas e cálculos voláteis. Centralizar tudo no banco causa lentidão e engessamento; centralizar tudo na aplicação resulta em dados órfãos e corrompidos.
 
