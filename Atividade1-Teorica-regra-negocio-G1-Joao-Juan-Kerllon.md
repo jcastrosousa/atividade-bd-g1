@@ -1,12 +1,12 @@
 # Atividade Teórica: Regra de Negócio no BD versus na Aplicação
 
-**Aluno(s):** [João Paulo de Castro Sousa, ]
+**Aluno(s):** João Paulo de Castro Sousa, Kerllon Matheus das Neves Amorim, Keven Juan Souza de Lima
 
-**Turma:** Ciência da Computação G1
+**Turma:** Ciência da Computação G1 / Introdução a Banco de Dados
 
 **Data:** 19/08/2026
 
-**Repositório Git:** https://github.com/jcastrosousa/atividade-bd-g1.git
+**Link do Repositório Git:** https://github.com/jcastrosousa/atividade-bd-g1.git
 
 ## Resumo Executivo
 Este trabalho analisa a implementação de regras de negócio em sistemas de software, comparando a abordagem de mantê-las no Banco de Dados contra a validação na Aplicação. A posição adotada pelo nosso grupo é a de que não existe uma solução única: regras críticas de integridade devem residir no banco de dados para garantir consistência global, enquanto regras de fluxo e cálculos dinâmicos devem ficar na aplicação para facilitar a manutenção.
@@ -88,3 +88,32 @@ CREATE TABLE produto (
     preco NUMERIC(10, 2) CHECK (preco > 0), -- Restrição de Domínio
     categoria VARCHAR(50) DEFAULT 'Geral'
 );
+```
+*Exemplo 2: Regra na Aplicação (Pseudocódigo)*
+Validando regras dinâmicas e de negócios (descontos máximos) antes de acionar o banco de dados.
+```python
+def aplicar_desconto(preco_original, percentual_desconto):
+    if percentual_desconto > 10.0:
+        return "Erro: Descontos acima de 10% precisam de aprovação da diretoria."
+    
+    preco_final = preco_original - (preco_original * (percentual_desconto / 100))
+    # Se passou pela regra da aplicação, envia para o banco
+    banco_de_dados.atualizar_preco(preco_final)
+    return "Desconto aplicado com sucesso!"
+```
+
+##3. Referências
+
+* Material de Aula: Conceitos Fundamentais - O que é Regra de Negócio?;
+
+* Material de Aula: Modelagem Relacional - Restrições de Integridade.;
+
+* Material de Aula: Programação de Banco de Dados e Transações ACID.;
+
+* Regras de negócio no banco de dados: quais as vantagens e desvantagens? Stack Overflow em Português. Disponível em: https://pt.stackoverflow.com/questions/15739/regras-de-neg%C3%B3cio-no-banco-de-dados-quais-as-vantagens-e-desvantagens.
+
+ ##4. Conclusões
+
+O grupo conclui que o sucesso de um sistema depende de aplicar a regra certa no lugar certo. O Banco de Dados não é apenas um local de armazenamento, mas a fundação que deve garantir a integridade de domínio, de chaves e a execução segura via transações ACID. Por outro lado, a Aplicação deve atuar como o maestro operacional, cuidando de validações dinâmicas e cálculos voláteis. Centralizar tudo no banco causa lentidão e engessamento; centralizar tudo na aplicação resulta em dados órfãos e corrompidos.
+
+**Link do Repositório Git:** https://github.com/jcastrosousa/atividade-bd-g1.git
